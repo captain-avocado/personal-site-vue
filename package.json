@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "vsvg -s ./src/assets/svg/ -t ./src/icons/ && vue-cli-service serve",
+    "build": "vsvg -s ./src/assets/svg/ -t ./src/icons/ && vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "svg": "vsvg -s ./src/assets/svg/ -t ./src/icons/"
   },
   "dependencies": {
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
+    "vue-simple-svg": "^1.3.2",
+    "vue-svgicon": "^3.2.6",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
@@ -22,6 +25,8 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",
+    "pug": "^2.0.4",
+    "pug-plain-loader": "^1.0.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.10"
   }

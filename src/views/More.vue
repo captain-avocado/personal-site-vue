@@ -1,3 +1,3 @@
 <template lang="pug">
-  .block This is About
+  .block This is More
 </template>

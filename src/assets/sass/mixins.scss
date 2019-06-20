@@ -1,0 +1,29 @@
+@mixin wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@mixin container {
+  width: 90%;
+  max-width: 1220px;
+}
+
+@mixin underscore-effect($color) {
+  position: relative;
+
+  &:after {
+    content: '';
+    height: 1px;
+    width: 0;
+    transition: width .4s;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: $color;
+  }
+
+  &:hover:after {
+    width: 100%;
+  }
+}
