@@ -4,17 +4,17 @@
       .header__left
         Logo
       .header__right
-        .header__menu-wrap
+        .header__menu-wrap(v-show="handleHeaderShow()")
           .menu.header__menu
-            router-link(to="/notes").menu__item Заметки
-            router-link(to="/projects").menu__item Проекты
-            router-link(to="/more").menu__item Другое
+            router-link(to="/notes" @click.native="showMenu = false").menu__item Заметки
+            router-link(to="/projects" @click.native="showMenu = false").menu__item Проекты
+            router-link(to="/more" @click.native="showMenu = false").menu__item Другое
             a(href="#" @click="showModal = true").menu__item.menu__item--rectangle Связаться
           a(href="https://github.com/klv-codehub" target="_blank").header__github-icon
             Icon(v-bind:color="'#000'" v-bind:name="'github-icon'")
           Button(v-bind:text="'Обо мне'")
-        Icon.mobile.header__mobile-contact(:name="'mail-big'" :className="'rounded-small'" :color="'#fff'")
-        Icon.mobile.header__mobile-menu(:name="'menu'" :className="'rounded-small'" :color="'#fff'")
+        Icon.mobile.header__mobile-contact(:name="'mail-big'" :className="'rounded-small'" :color="'#fff'" @click.native="showModal = true")
+        Icon.mobile.header__mobile-menu(:name="'menu'" :className="'rounded-small'" :color="'#fff'"  @click.native="showMenu = !showMenu")
     ContactPanel.header__contact-panel(v-show="showModal" @close="showModal = false")
 </template>
 <script>
@@ -32,8 +32,15 @@ export default {
   },
   data() {
     return {
-      showModal: false
+      showModal: false,
+      showMenu: false
     };
+  },
+  methods: {
+    handleHeaderShow() {
+      if (screen.width > 800) return true;
+      return this.showMenu ? true : false;
+    }
   }
 };
 </script>
@@ -51,6 +58,16 @@ export default {
     right: 20px;
     top: 20px;
     z-index: 20;
+
+    @include tablets {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__container {
@@ -61,6 +78,9 @@ export default {
 
   &__menu {
     margin-right: 10px;
+    @include tablets {
+      margin-right: 0;
+    }
   }
 
   &__github-icon {
@@ -70,13 +90,25 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    @include tablets {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
   }
 
   &__menu-wrap {
     display: flex;
     align-items: center;
     @include tablets {
-      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(#fff, 0.99);
     }
   }
 
@@ -89,11 +121,31 @@ export default {
     margin-right: 15px;
   }
 
+  &__mobile-contact,
+  &__mobile-menu {
+    z-index: 100;
+  }
+
   .menu {
+    @include tablets {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
     &__item {
       margin-right: 35px;
       &:last-child {
         margin-right: 10px;
+        @include tablets {
+          margin-right: 0;
+          marign-bottom: 0;
+        }
+      }
+
+      @include tablets {
+        margin-right: 0;
+        margin-bottom: 10px;
       }
 
       transition: color 0.3s;
@@ -108,6 +160,10 @@ export default {
         padding: 6px 10px;
         font-size: inherit;
         cursor: pointer;
+
+        @include tablets {
+          display: none;
+        }
       }
     }
   }

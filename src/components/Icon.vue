@@ -1,5 +1,5 @@
 <template lang="pug">
-  span.span(:class="className")
+  span.span(:class="className" :style="style")
     svgicon.icon(
       :name="name"  
       @mouseover.native="hovering = true"
@@ -12,7 +12,14 @@
 import "@/icons";
 
 export default {
-  props: ["color", "name", "className"],
+  props: ["color", "name", "className", "roundedColor"],
+  // computed: {
+  //   style() {
+  //     return "background-color: " + this.roundedColor
+  //       ? this.roundedColor
+  //       : "'$accent-color'";
+  //   }
+  // },
   data() {
     return {
       hovering: false

@@ -42,8 +42,11 @@ export default {
 
 .tr-wrap-enter,
 .tr-wrap-leave-to {
-  transform: translateX(100px) !important;
-  opacity: 0 !important;
+  transform: translateX(100px);
+  @include tablets {
+    transform: translateX(0);
+  }
+  opacity: 0;
 }
 
 .tr-wrap-enter-to,
@@ -67,10 +70,6 @@ export default {
   display: flex;
   cursor: grab;
 
-  // opacity: 0;
-  // // transform: translateX(-100px);
-  // transition: opacity 0.4s;
-
   &__bg {
     position: absolute;
     top: 0;
@@ -89,6 +88,12 @@ export default {
 
     display: flex;
     flex-direction: column;
+
+    @include tablets {
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+    }
   }
 
   &__intro {
@@ -107,6 +112,9 @@ export default {
 
   &__input-area {
     flex: 1;
+    @include tablets {
+      max-height: 200px;
+    }
 
     display: flex;
     flex-direction: column;
@@ -170,6 +178,10 @@ export default {
     position: absolute;
     bottom: -100px;
     right: 0;
+
+    @include tablets {
+      display: none;
+    }
   }
 }
 </style>
