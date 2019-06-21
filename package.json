@@ -2,18 +2,20 @@
   "name": "personal-site-vue",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/klv-codehub/personal-site-vue",
   "scripts": {
     "serve": "vsvg -s ./src/assets/svg/ -t ./src/icons/ && vue-cli-service serve",
     "build": "vsvg -s ./src/assets/svg/ -t ./src/icons/ && vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "svg": "vsvg -s ./src/assets/svg/ -t ./src/icons/"
+    "svg": "vsvg -s ./src/assets/svg/ -t ./src/icons/",
+    "deploy": "node ./node_modules/vue-gh-pages/index.js"
   },
   "dependencies": {
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
-    "vue-simple-svg": "^1.3.2",
     "vue-svgicon": "^3.2.6",
+    "vue2-touch-events": "^2.0.0",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
@@ -28,6 +30,7 @@
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^7.1.0",
+    "vue-gh-pages": "^1.19.0",
     "vue-template-compiler": "^2.6.10"
   }
 }

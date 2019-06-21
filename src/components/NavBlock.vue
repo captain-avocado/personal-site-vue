@@ -26,7 +26,7 @@
   background: #ffffff;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 850%;
+  width: 100%;
   max-width: 350px;
 
   &__item {

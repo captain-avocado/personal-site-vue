@@ -12,7 +12,7 @@ export default {
   background-color: $accent-color;
   font-size: 16px;
   border-radius: 6px;
-  padding: 6px 12px;
+  padding: 5px 12px;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.3s;

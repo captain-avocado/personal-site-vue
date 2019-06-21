@@ -17,7 +17,12 @@ export default {
 </script>
 <style lang="scss" scoped>
 .info {
+  width: 100%;
   max-width: 550px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 
   &__avatar {
     width: 200px;
@@ -30,6 +35,16 @@ export default {
     background-repeat: no-repeat;
     background-position: center center;
     background-image: url("../assets/images/avatar.jpg");
+
+    @include tablets {
+      // margin-bottom: 20px;
+      // margin-top: 20px;
+      margin: 20px;
+    }
+  }
+
+  &__descr {
+    width: 310px;
   }
 
   &__title {

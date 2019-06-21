@@ -1,17 +1,18 @@
 <template lang="pug">
-  span
+  span.span(:class="className")
     svgicon.icon(
       :name="name"  
       @mouseover.native="hovering = true"
       @mouseleave.native="hovering = false"
       :class="{ active: hovering }"
+      :color="color"
     )
 </template>
 <script>
 import "@/icons";
 
 export default {
-  props: ["color", "name"],
+  props: ["color", "name", "className"],
   data() {
     return {
       hovering: false
@@ -35,5 +36,22 @@ export default {
 
 .active {
   opacity: 0.7;
+}
+
+@mixin rounded($size, $color) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  background-color: $color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rounded {
+  @include rounded(65px, $accent-color);
+}
+
+.rounded-small {
+  @include rounded(45px, $accent-color);
 }
 </style>

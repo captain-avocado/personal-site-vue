@@ -3,8 +3,9 @@
     .content__container
       Info.content__left
       .content__right
-        Intro.content__intro
-        NavBlock.content__nav-block
+        .content__block
+          Intro.content__intro
+          NavBlock.content__nav-block
 </template>
 <script>
 import Info from "@/components/Info.vue";
@@ -27,6 +28,12 @@ export default {
   &__container {
     @include container;
     display: flex;
+
+    @include laptops {
+      flex-direction: column;
+      align-items: center;
+      padding: 80px 0;
+    }
   }
 
   &__left,
@@ -35,19 +42,28 @@ export default {
   }
 
   &__left {
-    display: flex;
-    justify-content: space-between;
+    align-self: center;
+
+    @include laptops {
+      margin-bottom: 80px;
+    }
   }
 
   &__right {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   &__nav-block {
     margin-top: 20px;
-    justify-self: center;
+    align-self: center;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 </style>

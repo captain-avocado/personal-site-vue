@@ -45,11 +45,20 @@ export default {
   &__left {
     display: flex;
     align-items: center;
+
+    @include tablets {
+      width: 100%;
+      justify-content: center;
+    }
   }
 
   &__right {
     display: flex;
     align-items: center;
+
+    @include tablets {
+      display: none;
+    }
   }
 
   &__copy {

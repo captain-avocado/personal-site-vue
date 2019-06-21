@@ -1,3 +1,10 @@
 body {
   font-family: 'Lato';
 }
+
+.mobile {
+  display: none !important;
+  @include tablets {
+    display: flex !important;
+  }
+}
