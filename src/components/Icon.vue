@@ -43,6 +43,9 @@ export default {
 
 .active {
   opacity: 0.7;
+  @include tablets {
+    opacity: 1;
+  }
 }
 
 @mixin rounded($size, $color) {

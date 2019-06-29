@@ -1,6 +1,6 @@
 <template lang="pug">
   #app.app
-    Header
+    Header.app__header(:class="scrolled > 0 ? 'active' : ''")
     router-view.view
     Footer
 </template>
@@ -14,6 +14,22 @@ export default {
   components: {
     Header,
     Footer
+  },
+  data() {
+    return {
+      scrolled: false
+    };
+  },
+  methods: {
+    handleScroll() {
+      this.scrolled = window.scrollY;
+    }
+  },
+  beforeMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
   }
 };
 </script>
@@ -24,6 +40,14 @@ export default {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding-top: $header-height;
+
+  &__header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
 }
 .view {
   flex: 1;

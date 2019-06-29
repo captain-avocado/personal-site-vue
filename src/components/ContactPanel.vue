@@ -25,11 +25,6 @@ export default {
   components: {
     Socials,
     Icon
-  },
-  data() {
-    return {
-      grabbed: false
-    };
   }
 };
 </script>
@@ -69,6 +64,10 @@ export default {
   padding: 15px 30px;
   display: flex;
   cursor: grab;
+  @include tablets {
+    border-radius: 0;
+    min-height: 450px;
+  }
 
   &__bg {
     position: absolute;

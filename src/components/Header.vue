@@ -13,8 +13,8 @@
           a(href="https://github.com/klv-codehub" target="_blank").header__github-icon
             Icon(v-bind:color="'#000'" v-bind:name="'github-icon'")
           Button(v-bind:text="'Обо мне'")
-        Icon.mobile.header__mobile-contact(:name="'mail-big'" :className="'rounded-small'" :color="'#fff'" @click.native="showModal = true")
-        Icon.mobile.header__mobile-menu(:name="'menu'" :className="'rounded-small'" :color="'#fff'"  @click.native="showMenu = !showMenu")
+        Icon.mobile.header__mobile-contact(:name="showModal ? 'close' : 'mail-big'" :className="'rounded-small'" :color="'#fff'" @click.native="showModal = !showModal; showMenu = false")
+        Icon.mobile.header__mobile-menu(:name="showMenu ? 'close' : 'menu'" :className="'rounded-small'" :color="'#fff'"  @click.native="showMenu = !showMenu; showModal = false")
     ContactPanel.header__contact-panel(v-show="showModal" @close="showModal = false")
 </template>
 <script>
@@ -48,7 +48,14 @@ export default {
 <style lang="scss" scoped>
 .header {
   padding: 15px 0;
+  background-color: #fff;
+  border: 0;
   @include wrapper;
+
+  &.active {
+    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.5s;
+  }
 
   position: relative;
   z-index: 10;
